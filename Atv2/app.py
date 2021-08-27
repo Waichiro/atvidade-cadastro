@@ -103,6 +103,28 @@ while True:
 
 # ------------------------------------------------------------------------------------------------------
 
+    elif resposta == 5:
+        while True:
+            r = menu(['Remover Aluno', 'Sair'])
+            if r == 1:
+                alunos = open('alunos.txt', 'r')
+                conteudo = alunos.readlines()
+
+                conteudo.append(input('Digite o que vai mudar : '))
+
+                alunos = open('alunos.txt', 'w')
+                alunos.writelines(conteudo)
+                alunos.close()
+
+            elif r == 2:
+
+                print('Saindo...')
+
+            break
+
+        else:
+
+            print('\033[31mDigite uma opção válida\033[m')
 
 
 
