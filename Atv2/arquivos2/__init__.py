@@ -27,22 +27,24 @@ def lerArquivo(nome):
     except:
         print('\033[31mErro ao ler o arquivo\033[m')
     else:
-        cabecalho('Alunos cadastrados(as)')
+        cabecalho('Caros cadastrados')
+        print("{0:<15}".format("Marca"), "{0:<22}".format("Descricao"), "{0:<12}".format("Preco"),
+              "{0:<8}".format("Ano"), "{0:<15}".format("Placa"))
         print(a.read())
     finally:
         a.close()
 
-def cadastrarAluno(alunos, nome='desconhecido', email='NAO INFORMADO' , curso= 'NAO INFORMADO'):
+def cadastrarAluno(marca, descricao='desconhecido', preco='NAO INFORMADO' , ano= 'NAO INFORMADO', placa= "nao informado" ):
     try:
-        a = open(alunos, 'at')
+        a = open('cadVeiculo.txt', 'at')
     except:
         print('\033[31mHouve um erro na abertura do arquivo\033[m')
     else:
         try:
-            a.write(f'{nome} - {email} - {curso}\n')
+            a.write(f'{marca} {descricao} {preco} {ano} {placa}\n')
         except:
             print('\033[31mHouve um erro na hora de escrever os dados\033[m')
         else:
-            print(f'Aluno,  {nome} adicionado.')
+            print(f'Carro {marca} adicionado.')
             a.close()
 

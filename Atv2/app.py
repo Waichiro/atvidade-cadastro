@@ -1,29 +1,31 @@
 from interface2.menus import *
 from arquivos2 import *
 
-alunos = 'alunos.txt'
+carro = 'cadVeiculo.txt'
 
-alunos_arq = alunos
+alunos_arq = carro
 
 
-if not arquivoExiste(alunos):
-    criarArquivo(alunos)
+if not arquivoExiste(carro):
+    criarArquivo(carro)
 
 
 while True:
-    resposta = menu(['Cadastrar Aluno', 'Listar Alunos', 'Buscar Alunos', 'Remover Alunos', 'Alterar Aluno','Sair do programa'])
+    resposta = menu(['Cadastrar carro', 'Listar carro', 'Buscar carro', 'Remover carro', 'Alterar carro','Sair do programa'])
 
 # ------------------------------------------------------------------------------------------------------
 
     if resposta == 1:
 
         while True:
-            r = menu(['Cadastrar Aluno', 'Sair'])
+            r = menu(['Cadastrar carro', 'Sair'])
             if r == 1:
-                nome = str(input('Nome: '))
-                email = str(input('Email: '))
-                curso = str(input('Curso: '))
-                cadastrarAluno(alunos, nome, email, curso)
+                marca = "{0:<15}".format(input('Marca: '))
+                descricao = "{0:<20}".format(input('descricao: '))
+                preco = "{0:<10}".format(input('preco: '))
+                ano = "{0:<6}".format(input('ano: '))
+                placa = "{0:<10}".format(input('placa: '))
+                cadastrarAluno(marca, descricao, preco, ano, placa)
 
             elif r == 2:
                 print('Saindo...')
@@ -36,11 +38,12 @@ while True:
 
     elif resposta == 2:
         while True:
-            r = menu(['Mostrar Alunos', 'Sair'])
+            r = menu(['Mostrar carro', 'Sair'])
             if r == 1:
-                lerArquivo(alunos)
+                lerArquivo(carro)
 
-                print(alunos)
+
+                print(carro)
             elif r == 2:
                 print('Saindo...')
                 break
@@ -51,16 +54,16 @@ while True:
 
     elif resposta == 3:
         while True:
-            r = menu(['Buscar Aluno', 'Sair'])
+            r = menu(['Buscar carro', 'Sair'])
             if r == 1:
-                alunos = open('alunos.txt', 'r')
-                nome = input(str("Buscar aluno: "))
+                carro = open('cadVeiculo.txt', 'r')
+                nome = input(str("Buscar carro: "))
 
-                for linha in alunos:
+                for linha in carro:
                     if nome in linha:
                         print(linha)
 
-                alunos.close()
+                carro.close()
             elif r == 2:
                 print('Saindo...')
                 break
@@ -71,25 +74,22 @@ while True:
 
     elif resposta == 4:
         while True:
-            r = menu(['Remover Aluno', 'Sair'])
+            r = menu(['Remover carro', 'Sair'])
             if r == 1:
-                alunos = open('alunos.txt', 'r')
-                nome = input(str("Buscar aluno: "))
+                carro = open('cadVeiculo.txt', 'r')
+                nome = input("Informe o carro que deseja remover: ")
 
-                alunos_arq = alunos.readline()
+                conteudo = carro.readlines()
 
-                count = 0
-                for linha in alunos_arq:
+                cont = 0
+                for linha in conteudo:
                     if nome in linha:
-                        alunos_arq.pop(count)
+                        conteudo.pop(cont)
+                    cont = cont + 1
 
-                    count = count + 1
-
-                alunos = open('alunos.txt', 'w')
-                alunos.writelines(alunos_arq)
-
-                alunos.close()
-
+                carro = open('cadVeiculo.txt', 'w')
+                carro.writelines(conteudo)
+                carro.close()
 
             elif r == 2:
 
@@ -104,30 +104,8 @@ while True:
 # ------------------------------------------------------------------------------------------------------
 
     elif resposta == 5:
-        while True:
-            r = menu(['Remover Aluno', 'Sair'])
-            if r == 1:
-                alunos = open('alunos.txt', 'r')
-                conteudo = alunos.readlines()
-
-                conteudo.append(input('Digite o que vai mudar : '))
-
-                alunos = open('alunos.txt', 'w')
-                alunos.writelines(conteudo)
-                alunos.close()
-
-            elif r == 2:
-
-                print('Saindo...')
-
-            break
-
-        else:
-
-            print('\033[31mDigite uma opção válida\033[m')
-
-
-
+        print("Nao soube fazer esse")
+        break
 
     elif resposta == 6:
         cabecalho('Saindo')

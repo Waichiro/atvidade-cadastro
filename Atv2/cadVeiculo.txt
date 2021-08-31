@@ -1,0 +1,4 @@
+
+Hyundai         HB20S                  48.000,00    2017     LET-1020
+Fiat            UNO                    42.000,00    2018     TAT-1010
+Ford            Ecosport               40.000,00    2015     LAI-1030
